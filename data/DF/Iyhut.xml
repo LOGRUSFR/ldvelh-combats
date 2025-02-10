@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.25" class="java.beans.XMLDecoder">
+ <object class="fr.dunan.jx.ldvelh.defis_fantastiques.Personnage" id="Personnage0">
+  <void property="chanceCourante">
+   <int>9</int>
+  </void>
+  <void property="chanceInitiale">
+   <int>10</int>
+  </void>
+  <void property="enduranceCourante">
+   <int>22</int>
+  </void>
+  <void property="enduranceInitiale">
+   <int>22</int>
+  </void>
+  <void property="equipement">
+   <void method="put">
+    <string>Epée</string>
+    <string></string>
+   </void>
+   <void method="put">
+    <string>Armure de cuir</string>
+    <string></string>
+   </void>
+   <void method="put">
+    <string>Sac à dos (6 objets speciaux)</string>
+    <string></string>
+   </void>
+   <void method="put">
+    <string>Lanterne, torche et briquet</string>
+    <string></string>
+   </void>
+   <void method="put">
+    <string>Nourriture</string>
+    <string></string>
+   </void>
+   <void method="put">
+    <string>Potion d&apos;Endurance</string>
+    <string></string>
+   </void>
+  </void>
+  <void property="habileteCourante">
+   <int>9</int>
+  </void>
+  <void property="habileteInitiale">
+   <int>9</int>
+  </void>
+  <void property="nom">
+   <string>Iyhut</string>
+  </void>
+  <void property="or">
+   <int>30</int>
+  </void>
+ </object>
+</java>
