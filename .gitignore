@@ -19,4 +19,4 @@ target
 /ldvelh_combats_simulator.iml
 
 # Local character files
-*.xml
+#*.xml
