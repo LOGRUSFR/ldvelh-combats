@@ -20,7 +20,7 @@
    <int>13</int>
   </void>
   <void property="nom">
-   <string>logrus-port_peril</string>
+   <string>xx-logrus-port_peril</string>
   </void>
  </object>
 </java>
