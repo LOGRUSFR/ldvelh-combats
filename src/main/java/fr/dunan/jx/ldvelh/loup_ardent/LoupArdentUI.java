@@ -23,7 +23,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         p.dump();
         System.out.println("Stocke ce personnage ? (o/n)");
         if (entree.next().equals("o"))
-            Stockage.serialise(p);
+            Stockage.serialise(Stockage.LA_DATA_DIR, p);
     }
 
     public void affichePersonnage() {
@@ -31,7 +31,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         String nom = entree.next();
         Personnage p;
         try {
-            p = (Personnage) Stockage.deserialise(nom);
+            p = (Personnage) Stockage.deserialise(Stockage.LA_DATA_DIR, nom);
             p.dump();
         } catch (FileNotFoundException e) {
             System.out.println("Pas de personnage correspondant à ce nom !");
@@ -65,7 +65,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         p.rendPdvInitiaux();
         // choixBouclier( p );
         p.dump();
-        Stockage.serialise(p);
+        Stockage.serialise(Stockage.LA_DATA_DIR, p);
     }
 
     /*
@@ -96,11 +96,11 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         String nomPremier = entree.next();
         Personnage p1;
         try {
-            p1 = (Personnage) Stockage.deserialise(nomPremier);
+            p1 = (Personnage) Stockage.deserialise(Stockage.LA_DATA_DIR, nomPremier);
             System.out
                     .println("Veuillez rentrer le nom du second assaillant :");
             String nomSecond = entree.next();
-            Personnage p2 = (Personnage) Stockage.deserialise(nomSecond);
+            Personnage p2 = (Personnage) Stockage.deserialise(Stockage.LA_DATA_DIR, nomSecond);
             int p1PdvSauve = p1.getPdv_courant();
             int p2PdvSauve = p2.getPdv_courant();
             Combat c;
@@ -113,8 +113,8 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
             }
             while (entree.next().equals("o"));
             c.recompenseVictorieux();
-            Stockage.serialise(p1);
-            Stockage.serialise(p2);
+            Stockage.serialise(Stockage.LA_DATA_DIR, p1);
+            Stockage.serialise(Stockage.LA_DATA_DIR, p2);
         } catch (FileNotFoundException e) {
             System.out.println("Pas de personnage correspondant à ce nom !");
         }
@@ -125,7 +125,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         String nom = entree.next();
         Personnage p;
         try {
-            p = (Personnage) Stockage.deserialise(nom);
+            p = (Personnage) Stockage.deserialise(Stockage.LA_DATA_DIR, nom);
         } catch (FileNotFoundException e) {
             System.out.println("Pas de personnage correspondant à ce nom !");
             return;
@@ -173,7 +173,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         }
         p.calculeCaracteristiquesDerivees();
         p.dump();
-        Stockage.serialise(p);
+        Stockage.serialise(Stockage.LA_DATA_DIR, p);
     }
 
     public void restaurePdv() {
@@ -181,7 +181,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         String nom = entree.next();
         Personnage p;
         try {
-            p = (Personnage) Stockage.deserialise(nom);
+            p = (Personnage) Stockage.deserialise(Stockage.LA_DATA_DIR, nom);
         } catch (FileNotFoundException e) {
             System.out.println("Pas de personnage correspondant à ce nom !");
             return;
@@ -196,7 +196,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
             p.restaurePdvCourantsParTotal(this.entree.nextInt());
         }
         p.dump();
-        Stockage.serialise(p);
+        Stockage.serialise(Stockage.LA_DATA_DIR, p);
     }
 
     public void equipePersonnageExistant() {
@@ -204,7 +204,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         String nom = entree.next();
         Personnage p;
         try {
-            p = (Personnage) Stockage.deserialise(nom);
+            p = (Personnage) Stockage.deserialise(Stockage.LA_DATA_DIR, nom);
         } catch (FileNotFoundException e) {
             System.out.println("Pas de personnage correspondant à ce nom !");
             return;
@@ -215,7 +215,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         // choixBouclier( p );
         p.calculeCaracteristiquesDerivees();
         p.dump();
-        Stockage.serialise(p);
+        Stockage.serialise(Stockage.LA_DATA_DIR, p);
     }
 
     public void menu() {
@@ -295,7 +295,7 @@ public class LoupArdentUI extends AInterfaceUtilisateur {
         String nom = entree.next();
         Personnage p;
         try {
-            p = (Personnage) Stockage.deserialise(nom);
+            p = (Personnage) Stockage.deserialise(Stockage.LA_DATA_DIR, nom);
             p.exportXml();
         } catch (FileNotFoundException e) {
             System.out.println("Pas de personnage correspondant à ce nom !");

@@ -34,7 +34,7 @@ import java.util.List;
 //FIXME code non abstrait (DF, LA...) a ameliorer
 public class Stockage {
     private static final String DF_DATA_DIR = "data/DF";
-    private static final String LA_DATA_DIR = "data/LA";
+    public static final String LA_DATA_DIR = "data/LA";
 
     private static String [] combine(String[] in1, String[] in2){
         List<String> list = new ArrayList<>();
@@ -54,6 +54,7 @@ public class Stockage {
         String[] childrensLA = repertoire_LA.list(filtreExtensionFichier);
 
         String[] childrens = combine(childrensDF, childrensLA);
+        Arrays.sort(childrens);
         for (String children : childrens) {
             System.out.println(children.substring(0,
                     children.lastIndexOf(".xml")));
@@ -61,9 +62,13 @@ public class Stockage {
     }
 
     public static void serialise(APersonnage p) {
+        serialise(DF_DATA_DIR, p);
+    }
+
+    public static void serialise(String path, APersonnage p) {
         FileOutputStream fichier = null;
         try {
-            fichier = new FileOutputStream(p.getNom() + ".xml");
+            fichier = new FileOutputStream(path +'/'+ p.getNom() + ".xml");
         } catch (java.io.IOException e) {
             System.err.println("Erreur lors de la création du fichier de sortie");
             e.printStackTrace();
@@ -77,11 +82,15 @@ public class Stockage {
         }
     }
 
-    public static APersonnage deserialise(String nomPersonnage)
+    public static APersonnage deserialise(String nom) throws FileNotFoundException {
+        return deserialise(DF_DATA_DIR,nom);
+    }
+
+    public static APersonnage deserialise(String path, String nomPersonnage)
             throws FileNotFoundException {
         APersonnage p = null;
         FileInputStream fichier;
-        fichier = new FileInputStream(nomPersonnage + ".xml");
+        fichier = new FileInputStream(path +'/'+ nomPersonnage + ".xml");
         try (XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(fichier))) {
             p = (APersonnage) decoder.readObject();
         } catch (final Exception e) {
